@@ -22,3 +22,49 @@ export const getCardList = () => {
     headers: config.headers,
   }).then(getResponseData);
 };
+
+export const setUserInfo = ({ name, about }) => {
+  return fetch(`${config.baseUrl}/users/me`, {
+    method: "PATCH",
+    headers: config.headers,
+    body: JSON.stringify({
+      name,
+      about,
+    }),
+  }).then(getResponseData);
+};
+
+export const setUserAvatar = (avatar) => {
+  return fetch(`${config.baseUrl}/users/me/avatar`, {
+    method: "PATCH",
+    headers: config.headers,
+    body: JSON.stringify({
+      avatar
+    }),
+  }).then(getResponseData);
+}
+
+export const addCard = ({ name, link }) => {
+  return fetch(`${config.baseUrl}/cards`, {
+    method: "POST",
+    headers: config.headers,
+    body: JSON.stringify({
+      name,
+      link,
+    }),
+  }).then(getResponseData);
+};
+
+export const deleteCardFromServer = (cardId) => {
+  return fetch(`${config.baseUrl}/cards/${cardId}`, {
+    method: "DELETE",
+    headers: config.headers,
+  }).then(getResponseData);
+};
+
+export const changeLikeCardStatus = (cardID, isLiked) => {
+  return fetch(`${config.baseUrl}/cards/likes/${cardID}`, {
+    method: isLiked ?  "DELETE" : "PUT",
+    headers: config.headers,
+  }).then((res) => getResponseData(res));
+};
