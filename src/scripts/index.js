@@ -271,7 +271,6 @@ const handleLogoClick = () => {
 
 logoElement.addEventListener("click", handleLogoClick);
 
-// EventListeners
 profileForm.addEventListener("submit", handleProfileFormSubmit);
 cardForm.addEventListener("submit", handleCardFormSubmit);
 avatarForm.addEventListener("submit", handleAvatarFromSubmit);
@@ -302,8 +301,6 @@ allPopups.forEach((popup) => {
   setCloseModalWindowEventListeners(popup);
 });
 
-
-
 let userId = null;
 
 Promise.all([getCardList(), getUserInfo()])
@@ -323,5 +320,5 @@ Promise.all([getCardList(), getUserInfo()])
     profileDescription.textContent = userData.about
   })
   .catch((err) => {
-    console.log(err); // В случае возникновения ошибки выводим её в консоль
+    console.log(err);
   });
